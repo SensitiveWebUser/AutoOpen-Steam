@@ -31,25 +31,25 @@ function hasNonVersionChanges(stagedFiles: string[]): boolean {
 
 function bumpVersion(): void {
     console.log(MESSAGES.BUMPING);
-    
+
     execSync('pnpm version minor --no-git-tag-version', { stdio: 'inherit' });
     execSync('pnpm exec tsx scripts/version-bump.ts', { stdio: 'inherit' });
-    
+
     const filesToAdd = CONSTANTS.VERSION_FILES.filter((file) => existsSync(file));
     if (filesToAdd.length > 0) {
         execSync(`git add ${filesToAdd.join(' ')}`, { stdio: 'inherit' });
     }
-    
+
     console.log(MESSAGES.SUCCESS);
 }
 
 function preCommitHook(): void {
     const stagedFiles = getStagedFiles();
-    
+
     if (stagedFiles.length === 0) {
         process.exit(0);
     }
-    
+
     if (hasNonVersionChanges(stagedFiles)) {
         bumpVersion();
     } else {
