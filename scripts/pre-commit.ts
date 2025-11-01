@@ -11,7 +11,7 @@ const MESSAGES = {
     DETECTING: '📦 Checking for changes...',
     LINTING: '🔍 Running lint...',
     FORMATTING: '✨ Running format check...',
-    BUMPING: '📦 Changes detected, bumping minor version...',
+    BUMPING: '📦 Changes detected, bumping patch version...',
     SUCCESS: '✅ Version bumped and added to commit',
     NO_CHANGES: '⏭️  No changes detected (version files only), skipping version bump',
     LINT_FAILED: '❌ Lint failed. Fix errors before committing.',
@@ -56,7 +56,7 @@ function runFormatCheck(): void {
 function bumpVersion(): void {
     console.log(MESSAGES.BUMPING);
 
-    execSync('pnpm version minor --no-git-tag-version', { stdio: 'inherit' });
+    execSync('pnpm version patch --no-git-tag-version', { stdio: 'inherit' });
     execSync('pnpm exec tsx scripts/version-bump.ts', { stdio: 'inherit' });
 
     const filesToAdd = CONSTANTS.VERSION_FILES.filter((file) => existsSync(file));
