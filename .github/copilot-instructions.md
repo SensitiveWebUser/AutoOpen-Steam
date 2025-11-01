@@ -36,14 +36,22 @@ pnpm run format         # Prettier (formats TS, HTML, CSS, JSON)
 pnpm run clean          # Removes dist/ directory
 ```
 
+### Git Commit Hook (Automatic Versioning)
+- **Pre-commit Hook**: Automatically bumps minor version when changes are committed
+- Hook detects staged changes (excluding package.json and manifest.json)
+- Runs `pnpm version minor` and syncs version to manifest.json
+- Adds version files (package.json, manifest.json, pnpm-lock.yaml) to the commit
+- **Manual Versioning**: Use `version:*` scripts if you need patch or major bumps instead
+
 ### Version Management (Critical Workflow)
-**Always use these scripts** - they sync `package.json` and `src/manifest.json`:
+**Automatic**: Pre-commit hook bumps minor version on every commit with changes
+**Manual Override**: Use these scripts for specific version bumps:
 ```bash
 pnpm run version:patch  # Bug fixes (1.0.0 -> 1.0.1)
 pnpm run version:minor  # New features (1.0.0 -> 1.1.0)
 pnpm run version:major  # Breaking changes (1.0.0 -> 2.0.0)
 ```
-**Do not manually edit version numbers** - `scripts/version-bump.ts` keeps them in sync.
+**Note**: `scripts/version-bump.ts` keeps package.json and manifest.json in sync
 
 ### Release Process (Exact Steps)
 1. `pnpm run version:patch` (or minor/major)
