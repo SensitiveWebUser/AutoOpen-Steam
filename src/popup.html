@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoOpen Steam Settings</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+
+  <body>
+    <div class="popup-container" role="main">
+      <header>
+        <h1 id="popup-title">AutoOpen Steam</h1>
+        <p class="subtitle" id="popup-subtitle">Steam Workshop Desktop Integration</p>
+      </header>
+
+      <section class="settings-section" aria-labelledby="settings-label">
+        <label for="preference" id="settings-label">Default Behavior:</label>
+        <select id="preference" class="preference-select" aria-describedby="help-text">
+          <option value="ask">Show Button (Ask Each Time)</option>
+          <option value="always">Always Open in Desktop App</option>
+          <option value="disabled">Disabled</option>
+        </select>
+      </section>
+
+      <section class="info-section" aria-label="Help information">
+        <p class="help-text" id="help-text">
+          Control how the extension behaves on Steam Workshop pages:
+        </p>
+        <ul class="help-list" role="list">
+          <li><strong>Show Button:</strong> Display "Open in Desktop App" button</li>
+          <li><strong>Always Open:</strong> Automatically redirect to Steam app</li>
+          <li><strong>Disabled:</strong> Extension does nothing</li>
+        </ul>
+      </section>
+
+      <div class="status-section" role="status" aria-live="polite" aria-atomic="true">
+        <span id="status-message" class="status-message"></span>
+      </div>
+
+      <footer class="footer">
+        <span class="version" id="version-number"></span>
+      </footer>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

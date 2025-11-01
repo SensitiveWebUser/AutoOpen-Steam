@@ -1,0 +1,79 @@
+:root {
+  --steam-blue-light: #66b0d7;
+  --steam-blue-medium: #4c97c5;
+  --steam-blue-dark: #3c7fab;
+  --steam-blue-darker: #2e6a8e;
+  --color-white: #ffffff;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --font-family-steam: 'Motiva Sans', Arial, sans-serif;
+  --font-size-base: 14px;
+  --font-weight-normal: 400;
+  --line-height-base: 18px;
+  --border-width: 1px;
+  --border-radius: 2px;
+  --padding-vertical: 10px;
+  --padding-horizontal: 20px;
+  --margin-vertical: 8px;
+  --container-margin: 12px;
+  --container-padding: 8px;
+  --outline-width: 2px;
+  --outline-offset: 2px;
+  --transition-duration: 0.15s;
+  --z-index-button: 1000;
+  --active-offset: 1px;
+}
+
+.autoopen-steam-btn {
+  font-family: var(--font-family-steam);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+
+  background: linear-gradient(to bottom, var(--steam-blue-medium) 5%, var(--steam-blue-dark) 95%);
+  background-color: var(--steam-blue-medium);
+
+  border: var(--border-width) solid var(--steam-blue-darker);
+  border-radius: var(--border-radius);
+
+  padding: var(--padding-vertical) var(--padding-horizontal);
+  margin: var(--margin-vertical) 0;
+
+  color: var(--color-white);
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 1px 1px 0 var(--color-shadow);
+
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+
+  transition: all var(--transition-duration) ease-in-out;
+
+  z-index: var(--z-index-button);
+  box-sizing: border-box;
+}
+
+.autoopen-steam-btn:hover {
+  background: linear-gradient(to bottom, var(--steam-blue-light) 5%, var(--steam-blue-medium) 95%);
+  background-color: var(--steam-blue-light);
+  color: var(--color-white);
+  border-color: var(--steam-blue-dark);
+}
+
+.autoopen-steam-btn:active {
+  position: relative;
+  top: var(--active-offset);
+  background: linear-gradient(to bottom, var(--steam-blue-dark) 5%, var(--steam-blue-darker) 95%);
+  background-color: var(--steam-blue-dark);
+}
+
+.autoopen-steam-btn:focus {
+  outline: var(--outline-width) solid var(--steam-blue-light);
+  outline-offset: var(--outline-offset);
+}
+
+.autoopen-steam-container {
+  display: block;
+  margin: var(--container-margin) 0;
+  padding: var(--container-padding) 0;
+}

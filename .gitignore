@@ -1,0 +1,8 @@
+node_modules/
+dist/
+releases/
+*.log
+.DS_Store
+.vscode/
+*.zip
+package-lock.json
