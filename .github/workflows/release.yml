@@ -1,4 +1,4 @@
-name: Release Extension
+name: Release
 
 on:
   push:
@@ -7,11 +7,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-release:
+  release:
+    name: Build and Release
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write
+
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -27,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint code
+      - name: Lint
         run: pnpm run lint
 
       - name: Format check
@@ -50,5 +53,4 @@ jobs:
           name: Release v${{ steps.version.outputs.version }}
           draft: false
           prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          generate_release_notes: true

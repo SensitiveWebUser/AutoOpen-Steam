@@ -9,9 +9,13 @@ const CONSTANTS = {
 
 const MESSAGES = {
     DETECTING: '📦 Checking for changes...',
+    LINTING: '🔍 Running lint...',
+    FORMATTING: '✨ Running format check...',
     BUMPING: '📦 Changes detected, bumping minor version...',
     SUCCESS: '✅ Version bumped and added to commit',
     NO_CHANGES: '⏭️  No changes detected (version files only), skipping version bump',
+    LINT_FAILED: '❌ Lint failed. Fix errors before committing.',
+    FORMAT_FAILED: '❌ Format check failed. Run "pnpm run format" to fix.',
 } as const;
 
 function getStagedFiles(): string[] {
@@ -27,6 +31,26 @@ function getStagedFiles(): string[] {
 
 function hasNonVersionChanges(stagedFiles: string[]): boolean {
     return stagedFiles.some((file) => !(CONSTANTS.EXCLUDED_FILES as readonly string[]).includes(file));
+}
+
+function runLint(): void {
+    console.log(MESSAGES.LINTING);
+    try {
+        execSync('pnpm run lint', { stdio: 'inherit' });
+    } catch (error) {
+        console.error(MESSAGES.LINT_FAILED);
+        process.exit(1);
+    }
+}
+
+function runFormatCheck(): void {
+    console.log(MESSAGES.FORMATTING);
+    try {
+        execSync('pnpm run format:check', { stdio: 'inherit' });
+    } catch (error) {
+        console.error(MESSAGES.FORMAT_FAILED);
+        process.exit(1);
+    }
 }
 
 function bumpVersion(): void {
@@ -51,6 +75,8 @@ function preCommitHook(): void {
     }
 
     if (hasNonVersionChanges(stagedFiles)) {
+        runLint();
+        runFormatCheck();
         bumpVersion();
     } else {
         console.log(MESSAGES.NO_CHANGES);

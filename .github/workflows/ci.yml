@@ -2,16 +2,17 @@ name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
 
 jobs:
-  test:
+  quality:
+    name: Quality Checks
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -33,5 +34,5 @@ jobs:
       - name: Format check
         run: pnpm run format:check
 
-      - name: Build
+      - name: Build production
         run: pnpm run build:prod
