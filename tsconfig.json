@@ -17,7 +17,8 @@
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
         "types": [
-            "chrome"
+            "chrome",
+            "node"
         ]
     },
     "include": [

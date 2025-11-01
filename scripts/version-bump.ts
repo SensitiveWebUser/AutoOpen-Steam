@@ -39,7 +39,7 @@ function updateManifestVersion(version: string): void {
         fs.readFileSync(CONSTANTS.MANIFEST_PATH, CONSTANTS.ENCODING)
     ) as Manifest;
     manifest.version = version;
-    
+
     const manifestJson = JSON.stringify(manifest, null, CONSTANTS.JSON_INDENT) + CONSTANTS.NEWLINE;
     fs.writeFileSync(CONSTANTS.MANIFEST_PATH, manifestJson);
 }
