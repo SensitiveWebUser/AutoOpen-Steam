@@ -17,10 +17,11 @@ Chromium extension (Manifest V3) that adds an "Open in Desktop App" button to St
 - **Chrome Storage Sync**: Preferences stored in `chrome.storage.sync` for cross-device sync
 - **Version Display**: Reads version from `chrome.runtime.getManifest()` for UI display
 
-### Build System (`build.js`)
+### Build System (`build.ts`)
 - **Custom esbuild Pipeline**: Not using a bundler framework - direct esbuild API usage
 - **Version Injection**: Reads `package.json` version and writes to `manifest.json` during build
 - **Static File Copying**: Manually copies HTML, CSS, PNG icons from `src/` to `dist/`
+- **TypeScript**: Build script written in TypeScript, executed via tsx
 - **Build Modes**: `--prod` (minified), `--watch` (dev), default (dev with sourcemaps)
 
 ## Development Workflow
@@ -88,9 +89,10 @@ pnpm run version:major  # Breaking changes (1.0.0 -> 2.0.0)
 5. Bump version using `version:*` scripts
 
 ### Modifying Build Process
-- Edit `build.js` directly (no webpack/vite config)
+- Edit `build.ts` directly (no webpack/vite config)
 - Always test both dev and prod builds
 - PNG icons are copied directly from `src/icons/` to `dist/icons/`
+- Build script uses TypeScript with clean code patterns (CONSTANTS, single-purpose functions)
 
 ### Debugging Content Script
 - Add `console.log()` statements (sourcemaps enabled in dev mode)

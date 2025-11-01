@@ -4,9 +4,9 @@
     "description": "Chromium extension to open Steam Workshop items in the Steam desktop app",
     "private": true,
     "scripts": {
-        "build": "node build.js",
-        "build:prod": "node build.js --prod",
-        "watch": "node build.js --watch",
+        "build": "tsx build.ts",
+        "build:prod": "tsx build.ts --prod",
+        "watch": "tsx build.ts --watch",
         "lint": "oxlint src",
         "format": "prettier --write \"src/**/*.{ts,html,css,json}\"",
         "format:check": "prettier --check \"src/**/*.{ts,html,css,json}\"",
