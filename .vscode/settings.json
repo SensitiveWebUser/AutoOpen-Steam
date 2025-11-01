@@ -1,0 +1,33 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "never",
+    "source.organizeImports": "never"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.formatOnSave": false
+  },
+  "[jsonc]": {
+    "editor.formatOnSave": false
+  },
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "prettier.enable": true,
+  "prettier.requireConfig": true,
+  "eslint.enable": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}
