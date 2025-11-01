@@ -59,7 +59,7 @@ pnpm run version:major  # Breaking changes (1.0.0 -> 2.0.0)
 3. `pnpm run package` (creates ZIP in `releases/`)
 4. `git add . && git commit -m "chore: release v{VERSION}"`
 5. `git tag v{VERSION} && git push && git push --tags`
-6. GitHub Actions (`release.yml`) auto-creates release with ZIP
+6. GitHub Actions (`release.yml`) auto-creates release with ZIP when tag is pushed
 
 ## Code Conventions
 

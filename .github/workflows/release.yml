@@ -2,6 +2,7 @@ name: Release
 
 on:
   push:
+    branches: [main]
     tags:
       - 'v*'
   workflow_dispatch:
@@ -46,11 +47,16 @@ jobs:
         id: version
         run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
+      - name: Verify package exists
+        run: ls -la releases/
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: releases/autoopen-steam-v${{ steps.version.outputs.version }}.zip
-          name: Release v${{ steps.version.outputs.version }}
+          files: releases/*.zip
+          name: AutoOpen Steam v${{ steps.version.outputs.version }}
+          tag_name: v${{ steps.version.outputs.version }}
           draft: false
           prerelease: false
           generate_release_notes: true
+          fail_on_unmatched_files: true
