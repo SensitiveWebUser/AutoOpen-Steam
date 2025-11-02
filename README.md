@@ -1,5 +1,10 @@
 # AutoOpen Steam
 
+[![CI](https://github.com/SensitiveWebUser/AutoOpen-Steam/actions/workflows/ci.yml/badge.svg)](https://github.com/SensitiveWebUser/AutoOpen-Steam/actions/workflows/ci.yml)
+[![Release](https://github.com/SensitiveWebUser/AutoOpen-Steam/actions/workflows/release.yml/badge.svg)](https://github.com/SensitiveWebUser/AutoOpen-Steam/actions/workflows/release.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/github/v/release/SensitiveWebUser/AutoOpen-Steam)](https://github.com/SensitiveWebUser/AutoOpen-Steam/releases)
+
 A lightweight Chromium extension that adds an "Open in Desktop App" button to Steam Workshop pages, allowing you to quickly open workshop items in the Steam desktop application.
 
 ## Features
@@ -28,8 +33,8 @@ A lightweight Chromium extension that adds an "Open in Desktop App" button to St
 
 1. **Clone and install dependencies:**
    ```bash
-   git clone https://github.com/yourusername/autoopen-steam.git
-   cd autoopen-steam
+   git clone https://github.com/SensitiveWebUser/AutoOpen-Steam.git
+   cd AutoOpen-Steam
    pnpm install
    ```
 
@@ -77,32 +82,29 @@ A lightweight Chromium extension that adds an "Open in Desktop App" button to St
 
 ### Version Management
 
+**Automatic versioning** via pre-commit hook:
+- Every commit with code changes automatically bumps the minor version
+- Version files (package.json, manifest.json) are synced and added to the commit
+
+**Manual version control**:
 ```bash
-# Bump version and update manifest
 pnpm run version:patch  # 1.0.0 -> 1.0.1 (bug fixes)
 pnpm run version:minor  # 1.0.0 -> 1.1.0 (new features)
 pnpm run version:major  # 1.0.0 -> 2.0.0 (breaking changes)
-
-# After version bump, commit and tag
-git add .
-git commit -m "chore: bump version to v1.0.1"
-git tag v1.0.1
-git push && git push --tags
 ```
 
 ### Release Process
 
-1. Bump version: `pnpm run version:patch`
-2. Build production: `pnpm run build:prod`
-3. Package: `pnpm run package`
-4. Commit and tag:
+The project uses automated versioning and releases:
+
+1. **Automatic**: Every commit to `main` triggers a version bump and creates a release
+2. **Manual**: Use version scripts for specific bumps:
    ```bash
-   git add .
-   git commit -m "chore: release v1.0.1"
-   git tag v1.0.1
-   git push && git push --tags
+   pnpm run version:patch  # Bug fixes
+   pnpm run version:minor  # New features
+   pnpm run version:major  # Breaking changes
    ```
-5. GitHub Actions will automatically create a release with the packaged ZIP
+3. Push to `main` or create a tag to trigger GitHub Actions release workflow
 
 ### Project Structure
 
@@ -159,14 +161,20 @@ The extension uses the `steam://url/CommunityFilePage/[ID]` protocol to open wor
 
 ## License
 
-MIT
+[MIT](LICENSE) © 2025 AutoOpen Steam Contributors
 
 ## Contributing
 
-Contributions are welcome! Please ensure:
-- Code passes linting: `pnpm run lint`
-- Code is formatted: `pnpm run format`
-- Production build succeeds: `pnpm run build:prod`
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-Submit PRs against the `develop` branch.
+## Support
+
+- 🐛 [Report a Bug](https://github.com/SensitiveWebUser/AutoOpen-Steam/issues/new?labels=bug)
+- 💡 [Request a Feature](https://github.com/SensitiveWebUser/AutoOpen-Steam/issues/new?labels=enhancement)
+- 📖 [Documentation](https://github.com/SensitiveWebUser/AutoOpen-Steam/wiki)
+
+## Acknowledgments
+
+- Steam team for the amazing platform
+- All contributors who help improve this extension
 

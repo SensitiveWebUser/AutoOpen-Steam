@@ -1,6 +1,6 @@
 {
   "name": "autoopen-steam",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "Chromium extension to open Steam Workshop items in the Steam desktop app",
   "private": true,
   "scripts": {
@@ -23,8 +23,16 @@
     "chrome-extension",
     "browser-extension"
   ],
-  "author": "",
+  "author": "SensitiveWebUser",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SensitiveWebUser/AutoOpen-Steam.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SensitiveWebUser/AutoOpen-Steam/issues"
+  },
+  "homepage": "https://github.com/SensitiveWebUser/AutoOpen-Steam#readme",
   "devDependencies": {
     "@types/chrome": "^0.1.27",
     "@types/node": "^24.9.2",
