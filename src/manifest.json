@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "AutoOpen Steam",
+  "name": "Auto Open Steam",
   "version": "1.5.6",
   "description": "Open Steam Workshop items in the Steam desktop app with a single click",
   "icons": {
@@ -19,7 +19,7 @@
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     },
-    "default_title": "AutoOpen Steam Settings"
+    "default_title": "Auto Open Steam"
   },
   "content_scripts": [
     {
