@@ -1,6 +1,6 @@
 {
   "name": "autoopen-steam",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "Chromium extension to open Steam Workshop items in the Steam desktop app",
   "private": true,
   "scripts": {
@@ -8,8 +8,8 @@
     "build:prod": "tsx build.ts --prod",
     "watch": "tsx build.ts --watch",
     "lint": "oxlint src",
-    "format": "prettier --write \"src/**/*.{ts,html,css,json}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,html,css,json}\"",
+    "format": "prettier --write \"src/**/*.{ts,html,css}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,html,css}\"",
     "clean": "node -e \"require('fs').rmSync('dist', {recursive: true, force: true})\"",
     "package": "tsx scripts/package.ts",
     "version:patch": "pnpm version patch --no-git-tag-version && tsx scripts/version-bump.ts",

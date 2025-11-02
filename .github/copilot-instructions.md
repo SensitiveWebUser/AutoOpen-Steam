@@ -54,14 +54,22 @@ pnpm run version:major  # Breaking changes (1.0.0 -> 2.0.0)
 **Note**: `scripts/version-bump.ts` keeps package.json and manifest.json in sync
 
 ### Release Process (Exact Steps)
-1. `pnpm run version:patch` (or minor/major)
-2. `pnpm run build:prod`
-3. `pnpm run package` (creates ZIP in `releases/`)
-4. `git add . && git commit -m "chore: release v{VERSION}"`
-5. `git tag v{VERSION} && git push && git push --tags`
-6. GitHub Actions (`release.yml`) auto-creates release with ZIP when tag is pushed
+1. Make changes and commit (pre-commit hook auto-bumps version)
+2. Push to `main` branch
+3. GitHub Actions automatically:
+   - Runs quality checks (lint, format, build)
+   - Packages extension as ZIP
+   - Creates GitHub release with ZIP attached
+4. **Manual tag release**: `git tag v{VERSION} && git push --tags` (triggers same process)
 
 ## Code Conventions
+
+### VSCode Configuration
+- **Settings**: `.vscode/settings.json` configures format-on-save for TS/JS/HTML/CSS only
+- **JSON Files**: Format-on-save disabled for JSON to prevent IDE conflicts
+- **Prettier**: Used for code formatting (TS, JS, HTML, CSS)
+- **oxlint**: Used for linting (configured in `oxlint.json`)
+- **Recommended Extensions**: Prettier and oxc-vscode (see `.vscode/extensions.json`)
 
 ### TypeScript Strictness
 - **tsconfig.json**: All strict flags enabled (`noUnusedLocals`, `noUnusedParameters`, `noImplicitReturns`, etc.)
@@ -84,7 +92,11 @@ pnpm run version:major  # Breaking changes (1.0.0 -> 2.0.0)
 
 ## Testing & Validation
 - **No automated tests**: Manual testing workflow via "Load unpacked" in `chrome://extensions/`
-- **CI Checks**: Lint + format check + production build must pass (see `.github/workflows/ci.yml`)
+- **CI Workflows**:
+  - `quality.yml` - Reusable workflow for lint, format check, and build
+  - `ci.yml` - Runs quality checks on pushes to main/develop and PRs
+  - `release.yml` - Runs quality checks, then packages and creates GitHub release
+- **All workflows**: Lint + format check + production build must pass
 - **Test on Real Pages**: Always test on actual Steam Workshop pages (e.g., Skyrim, CS2 workshop items)
 
 ## Common Tasks
