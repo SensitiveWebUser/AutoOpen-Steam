@@ -1,6 +1,6 @@
 {
   "name": "autoopen-steam",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "Chromium extension to open Steam Workshop items in the Steam desktop app",
   "private": true,
   "scripts": {
