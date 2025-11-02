@@ -3,5 +3,4 @@ dist/
 releases/
 *.log
 .DS_Store
-*.zip
 package-lock.json
